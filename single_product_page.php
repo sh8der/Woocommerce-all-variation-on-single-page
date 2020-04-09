@@ -15,6 +15,8 @@ remove_action('woocommerce_single_product_summary', 'woocommerce_template_single
 add_action('woocommerce_single_product_summary', 'render_all_variables_in_table', 10);
 // Создаём WP ADMIN AJAX событие для обработки ajax добавления вариации в корзину
 add_action('wp_ajax_woocommerce_add_to_cart_variable_rc', 'woocommerce_add_to_cart_variable_rc_callback');
+// Обязательно регаем action wp_ajax_nopriv с той же колбэк функцией, делается для того чтобы у неавторизованого пользователя работала callback функция
+add_action('wp_ajax_nopriv_woocommerce_add_to_cart_variable_rc', 'woocommerce_add_to_cart_variable_rc_callback');
 // Подключаем стили и скрипты для офомления списка вариаций и ajax добавления вариации в корзину
 add_action('wp_enqueue_scripts', 'sh8der_enc_assets_file');
 
